@@ -1,11 +1,7 @@
-# AIrWAVE Platform Prototype
-
-AIrWAVE is a comprehensive digital ad execution platform that leverages dynamic templates and various APIs to help businesses produce digital assets at scale.
+# AIrWAVE Platform
 
 ## Overview
-
-This prototype implements the core functionality of the AIrWAVE platform, including:
-
+AIrWAVE is a comprehensive digital ad execution platform that leverages dynamic templates and various APIs to help businesses produce digital assets at scale. This prototype demonstrates the core functionality of the AIrWAVE platform, including:
 - User authentication (login, signup, password reset)
 - Client management with branding colors
 - Asset library with drag-and-drop uploads, tagging, and filtering
@@ -16,7 +12,6 @@ This prototype implements the core functionality of the AIrWAVE platform, includ
 - Export functionality for generating deliverable assets
 
 ## Technology Stack
-
 - **Frontend**: React with TypeScript, Material UI
 - **Backend**: Supabase for authentication, database, and storage
 - **External APIs**: 
@@ -27,15 +22,12 @@ This prototype implements the core functionality of the AIrWAVE platform, includ
   - Runway for additional AI image processing (placeholder)
 
 ## Getting Started
-
 ### Prerequisites
-
 - Node.js (v14 or higher)
 - npm (v6 or higher)
 - Supabase account
 
 ### Installation
-
 1. Clone the repository
 2. Install dependencies:
    ```
@@ -57,7 +49,6 @@ This prototype implements the core functionality of the AIrWAVE platform, includ
    ```
 
 ## Project Structure
-
 - `/src/components`: Reusable UI components
 - `/src/context`: React context providers for state management
 - `/src/pages`: Page components for different routes
@@ -68,63 +59,52 @@ This prototype implements the core functionality of the AIrWAVE platform, includ
 - `/src/hooks`: Custom React hooks
 
 ## Features
-
 ### Authentication
-
 - Login with email and password
 - Sign up with email verification
 - Password reset functionality
 - Protected routes for authenticated users
 
 ### Client Management
-
 - Create and manage client profiles
 - Set client branding colors
 - Select active client for content creation
 
 ### Asset Management
-
 - Upload assets with drag-and-drop
 - Tag assets for easy organization
 - Filter assets by type and tags
 - View and manage asset details
 
 ### Template Management
-
 - Import templates from Creatomate
 - View template details including dynamic fields
 - Use templates for content creation
 
 ### Content Generation
-
 - Generate strategic motivations based on client briefs
 - Create copy variations with different tones and lengths
 - Approve and manage generated content
 
 ### Visual Matrix
-
 - Create matrices to organize content across platforms and formats
 - Assign assets and templates to matrix items
 - View and manage matrix items
 
 ### Approval Workflow
-
 - Create approval requests for content
 - Assign requests to specific users
 - Add comments to requests
 - Approve, reject, or request changes
 
 ### Export Functionality
-
 - Create export jobs for approved content
 - Select export formats (MP4, JPG, PNG, GIF, ZIP)
 - Configure export settings (quality, source files)
 - Download completed exports
 
 ## API Integration
-
 This prototype includes placeholder implementations for the following API integrations:
-
 - **OpenAI API**: For text-to-image generation
 - **Creatomate API**: For video generation and rendering
 - **AssemblyAI API**: For subtitle generation
@@ -134,9 +114,7 @@ This prototype includes placeholder implementations for the following API integr
 In a production environment, these placeholder implementations would be replaced with actual API calls using the provided API keys.
 
 ## Database Schema
-
 The Supabase database includes the following tables:
-
 - `users`: User accounts and authentication
 - `clients`: Client information and branding
 - `assets`: Uploaded assets and metadata
@@ -150,11 +128,9 @@ The Supabase database includes the following tables:
 - `export_jobs`: Export job definitions and status
 
 ## Deployment
-
 This prototype is designed to be deployed to a production environment using Supabase for backend services. The React frontend can be deployed to any static hosting service such as Vercel, Netlify, or AWS S3.
 
 ## Future Enhancements
-
 - Integration with additional AI services
 - Enhanced analytics and reporting
 - Bulk operations for assets and templates
@@ -163,5 +139,4 @@ This prototype is designed to be deployed to a production environment using Supa
 - Integration with marketing platforms
 
 ## License
-
 This project is proprietary and confidential.
