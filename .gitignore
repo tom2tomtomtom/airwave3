@@ -34,3 +34,6 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# Config files with sensitive data
+src/config/fallbackConfig.ts
