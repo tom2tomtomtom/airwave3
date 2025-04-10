@@ -258,7 +258,7 @@ const CopyGenerator: React.FC = () => {
                   <CardActions>
                     <IconButton 
                       size="small" 
-                      onClick={() => handleCopyCopyToClipboard(copy.content)}
+                      onClick={() => handleCopyCopyToClipboard(copy.content || copy.copy_text || '')}
                       title="Copy to clipboard"
                     >
                       <ContentCopyIcon fontSize="small" />
@@ -310,7 +310,7 @@ const CopyGenerator: React.FC = () => {
                   <CardActions>
                     <IconButton 
                       size="small" 
-                      onClick={() => handleCopyCopyToClipboard(copy.content)}
+                      onClick={() => handleCopyCopyToClipboard(copy.content || copy.copy_text || '')}
                       title="Copy to clipboard"
                     >
                       <ContentCopyIcon fontSize="small" />

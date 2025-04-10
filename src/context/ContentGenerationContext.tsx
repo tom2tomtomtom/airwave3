@@ -53,11 +53,20 @@ export const ContentGenerationProvider: React.FC<{ children: React.ReactNode }> 
       const createdMotivations: StrategicMotivation[] = [];
       
       // Create motivation records in database
-      for (const content of mockMotivations) {
+      for (const motivationText of mockMotivations) {
+        // Use the public method to get user ID instead of accessing private supabase property
+        const userId = await databaseService.getCurrentUserId();
+        if (!userId) {
+          throw new Error('No user ID available');
+        }
+        
         const motivation = await databaseService.createMotivation({
-          client_id: selectedClient.id,
-          content,
-          is_approved: false
+          user_id: userId,
+          title: motivationText,
+          description: motivationText,
+          client_id: selectedClient.id, // For compatibility
+          content: motivationText, // For compatibility
+          is_approved: false // For compatibility
         });
         
         createdMotivations.push(motivation);
@@ -118,8 +127,8 @@ export const ContentGenerationProvider: React.FC<{ children: React.ReactNode }> 
         Humorous: "light-hearted and funny"
       };
       
-      const toneDescription = toneDescriptions[tone] || "conversational";
-      const lengthDescription = lengthMap[length];
+      const toneDescription = toneDescriptions[tone as keyof typeof toneDescriptions] || "conversational";
+      const lengthDescription = lengthMap[length as keyof typeof lengthMap] || 'medium length';
       
       for (let i = 0; i < count; i++) {
         let copy = `${motivation.content} with a ${toneDescription} tone. This copy is ${lengthDescription}.`;
@@ -137,8 +146,12 @@ export const ContentGenerationProvider: React.FC<{ children: React.ReactNode }> 
       // Create copy variation records in database
       for (const content of mockCopyVariations) {
         const copyVariation = await databaseService.createCopyVariation({
-          client_id: selectedClient.id,
+          // Required fields for the new interface
           motivation_id: motivationId,
+          copy_text: content,
+          variation_number: i + 1,
+          // Compatibility fields
+          client_id: selectedClient.id,
           content,
           tone,
           length,
@@ -212,12 +225,14 @@ export const ContentGenerationProvider: React.FC<{ children: React.ReactNode }> 
 
   const approveCopyVariation = async (copyId: string) => {
     try {
-      // In a real implementation, this would update the database
-      // For the prototype, we'll just update the local state
+      // Use the database service method to update the approval status
+      const approvedCopy = await databaseService.approveCopyVariation(copyId);
+      
+      // Update the local state with the updated copy
       setCopyVariations(prevCopyVariations => 
         prevCopyVariations.map(copy => 
           copy.id === copyId 
-            ? { ...copy, is_approved: true } 
+            ? { ...copy, is_approved: approvedCopy.is_approved } 
             : copy
         )
       );

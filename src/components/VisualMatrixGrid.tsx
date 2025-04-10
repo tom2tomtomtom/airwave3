@@ -223,7 +223,7 @@ const AddMatrixItemDialog: React.FC<AddMatrixItemDialogProps> = ({ open, onClose
                 ) : (
                   copyVariations.map(copy => (
                     <MenuItem key={copy.id} value={copy.id}>
-                      {copy.content.substring(0, 50)}...
+                      {(copy.content || copy.copy_text || '').substring(0, 50)}...
                     </MenuItem>
                   ))
                 )}
